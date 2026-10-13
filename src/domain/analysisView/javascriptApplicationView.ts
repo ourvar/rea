@@ -253,6 +253,10 @@ export const projectJavaScriptApplicationView = (
     return err(
       jsIncompatible("WASM views require inspect_wasm_artifact Evidence."),
     );
+  if (view.kind === "evm")
+    return err(
+      jsIncompatible("EVM views require inspect_evm_interface Evidence."),
+    );
   if (view.kind === "summary")
     return ok({
       kind: "summary",
@@ -310,7 +314,7 @@ export const projectJavaScriptApplicationView = (
       ...shared,
     });
   }
-  if (view.collection !== "modules")
+  if (view.kind !== "page" || view.collection !== "modules")
     return err(
       jsIncompatible(
         "Section and symbol collections apply to inspect_binary_layout Evidence.",
