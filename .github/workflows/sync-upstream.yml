@@ -14,5 +14,5 @@ jobs:
     steps:
       - name: Sync with morluto/rea
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: gh repo sync ourvar/rea --source morluto/rea --branch main
